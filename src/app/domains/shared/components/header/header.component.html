@@ -20,7 +20,7 @@
     <div class="flex items-center">
       <button class="p-2 border rounded relative" (click)="toggleSideMenu()">
         <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">
-          {{ cart.length }}
+          {{ cart().length }}
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
@@ -33,7 +33,7 @@
 </nav>
 <div class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
   [class.translate-x-full]="hideSideMenu()">
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-4">
     <p class="text-xl">My Cart</p>
     <button (click)="toggleSideMenu()">
 
@@ -44,27 +44,10 @@
     </button>
   </div>
   <div>
-    <!-- create the list of products in the cart, where i can visualize the title, price, and total of products requested -->
-    <!-- <div *ngIf="cart.length === 0" class="text-center py-4 text-gray-600">
+    <div *ngIf="cart().length === 0" class="empty-cart-message">
       <p>Your cart is empty</p>
     </div>
-    <div *ngFor="let product of cart" class="flex items-center mb-4">
-      <img
-        src="{{ product.image }}"
-        alt="{{ product.title }}"
-        class="w-16 h-16 object-cover rounded mr-4"
-      />
-      <div>
-        <p class="font-bold">{{ product.title }}</p>
-        <p class="text-gray-700">{{ product.price | currency }}</p>
-      </div>
-    </div> -->
-
-
-    <div *ngIf="cart.length === 0" class="empty-cart-message">
-      <p>Your cart is empty</p>
-    </div>
-    <div *ngFor="let product of cart" class="cart-item">
+    <div *ngFor="let product of cart()" class="cart-item">
       <div class="product-image">
         <img src="{{ product.image }}" alt="{{ product.title }}" class="w-16 h-16 object-cover rounded" />
       </div>
@@ -74,7 +57,7 @@
       </div>
     </div>
     <div class="bg-blue-100 p-4 rounded-lg shadow">
-      <p class="text-gray-700 font-semibold">Total: {{ cart.length }}</p>
+      <p class="text-gray-700 font-semibold">Total: {{ total() }}</p>
     </div>
   </div>
 </div>
