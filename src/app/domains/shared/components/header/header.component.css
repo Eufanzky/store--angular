@@ -1,0 +1,27 @@
+.empty-cart-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+  }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .product-image {
+    margin-right: 15px;
+  }
+
+  .product-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .product-price {
+    font-size: 14px;
+    color: #333;
+  }
