@@ -1,23 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { formatDistance } from 'date-fns';
 
 @Pipe({
   name: 'timeAgo',
   standalone: true
 })
 export class TimeAgoPipe implements PipeTransform {
-  transform(dateStr: string): string {
+  transform(value: string): string {
+    const date = new Date(value);
     const today = new Date();
-    const date = new Date(dateStr); // Convert string to Date
-    const monthsAgo = today.getMonth() - date.getMonth() + 
-                      (12 * (today.getFullYear() - date.getFullYear())); // Calculate difference including year
-    if (monthsAgo !== 0) {
-      return `${monthsAgo} months ago`;
-    } else {
-      const daysAgo = today.getDay() - date.getDay() + 
-                      (12 * (today.getFullYear() - date.getFullYear()));
-      return `${daysAgo} days ago`;
-
-    }
+    return formatDistance(today, date);
   }
 
 
