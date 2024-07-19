@@ -4,7 +4,9 @@
         corporis reprehenderit sed officia ut iure? Ea, enim perspiciatis placeat amet quasi pariatur similique
         nostrum quis, nobis consequatur doloribus possimus atque.</p>
     <p class="text-sm">Número de clientes:</p>
-    <app-counter class="text-sm" [duration]="duration()" [message]="message()" *ngIf="duration() > 0" />
+    @if (duration() > 0) {
+<app-counter class="text-sm" [duration]="duration()" [message]="message()" />
+}
     <div>
         <app-wave-audio audioUrl="assets/audio.mp3" />
     </div>
